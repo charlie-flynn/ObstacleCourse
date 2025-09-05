@@ -21,22 +21,18 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	USceneComponent* RootScene;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UBoxComponent* DetectionZone;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UStaticMeshComponent* Camera;
 
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	USpotLightComponent* Spotlight;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 private:
 	UFUNCTION(BlueprintCallable)

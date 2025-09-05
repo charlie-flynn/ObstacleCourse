@@ -15,11 +15,14 @@ ASecurityCamera::ASecurityCamera()
 	RootScene = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
 	RootComponent = RootScene;
 	Camera = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Camera"));
+	DetectionZone = CreateDefaultSubobject<UBoxComponent>(TEXT("Detection Zone"));
+	Spotlight = CreateDefaultSubobject<USpotLightComponent>(TEXT("Spotlight"));
 	Camera->SetupAttachment(RootComponent);										
 	DetectionZone->SetupAttachment(RootComponent);										
 	Spotlight->SetupAttachment(RootComponent);
 
 	DetectionZone->SetCollisionProfileName("OverlapAll");
+	Spotlight->SetLightColor({ 0, 255, 0 });
 }
 
 // Called when the game starts or when spawned
@@ -29,16 +32,9 @@ void ASecurityCamera::BeginPlay()
 	
 }
 
-// Called every frame
-void ASecurityCamera::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 void ASecurityCamera::UpdateSpotlightStatus(bool SpottedPlayer)
 {
-	Spotlight->SetLightColor(SpottedPlayer ? FLinearColor(0, 255, 0) : FLinearColor(255, 0, 0), false);
+	Spotlight->SetLightColor(SpottedPlayer ? FLinearColor(255, 0, 0) : FLinearColor(0, 255, 0), false);
 
 	// AObstacleGamePlayerState* playerState = get the player state and try to cast it
 	// if playerState exists
