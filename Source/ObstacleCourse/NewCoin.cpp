@@ -53,10 +53,6 @@ void ANewCoin::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	ACharacter* PlayerCharacter = Cast<ACharacter>(OtherActor);
 	if (!PlayerCharacter) return;
 
-	if (GEngine) {
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Test!"));
-	}
-
 	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
 	AObstacleGamePlayerState* PlayerState = PlayerController != NULL ? PlayerController->GetPlayerState<AObstacleGamePlayerState>() : NULL;
 

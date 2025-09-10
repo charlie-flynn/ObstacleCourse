@@ -20,7 +20,9 @@ private:
 	bool PlayerVisibility = false;
 
 public:
+	UFUNCTION(BlueprintCallable)
 	int GetCoins();
+
 	bool SetCoins(int amount);
 
 	bool GetPlayerVisibility();

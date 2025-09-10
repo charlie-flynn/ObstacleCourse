@@ -21,7 +21,7 @@ bool AObstacleGamePlayerState::GetPlayerVisibility()
 
 bool AObstacleGamePlayerState::AddCoins(int amount)
 {
-	Coins += amount;
+	SetCoins(Coins + amount);
 	OnCoinUpdateDispatcher.Broadcast(Coins, amount);
 	return true;
 }
