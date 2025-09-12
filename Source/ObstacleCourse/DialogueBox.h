@@ -12,14 +12,15 @@ class OBSTACLECOURSE_API ADialogueBox : public AActor
 	GENERATED_BODY()
 	
 
-
-public:	
-	UPROPERTY(BlueprintReadWrite)
-	TArray<FText> Dialogue;
-
 private:
-	FString* DisplayDialogue;
+	TArray<FString> Dialogue;
+	FString DisplayDialogue;
 	
+	int DialogueTextIndex;
+
+	float CharacterDisplayDelay;
+	float CharacterDisplayTimer;
+
 public:
 	// Sets default values for this actor's properties
 	ADialogueBox();
@@ -31,5 +32,14 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void AddDialogue(FString AddedDialogue);
+
+	UFUNCTION(BlueprintCallable)
+	FString GetDisplayDialogue();
+
+	UFUNCTION(BlueprintCallable)
+	bool IsDialogueEmpty();
 
 };
